@@ -45,13 +45,31 @@ return {
             key = "r",
           },
           {
-            icon = "  ",
-            desc = "Open Git Repo",
+            icon = "  ",
+            desc = "Open Repo",
             key = "g",
             action = function()
               require("telescope.builtin").find_files({
-                prompt_title = "Select Git Repository",
-                cwd = "~/Documents",
+                prompt_title = "Select Repository",
+                cwd = "~/Documents/Kering/repo",
+                find_command = { "fd", "--type", "d", "--max-depth", "1" },
+                attach_mappings = function(_, map)
+                  local actions = require("telescope.actions")
+                  local action_state = require("telescope.actions.state")
+
+                  local open_repo = function(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    actions.close(prompt_bufnr)
+                    vim.cmd("cd ~/Documents/Kering/repo/" .. selection[1])
+                    vim.cmd("e " .. selection [1])
+                    vim.cmd("Neotree toggle left")
+                  end
+
+                  map("i", "<CR>", open_repo)
+                  map("n", "<CR>", open_repo)
+
+                  return true
+                end,
               })
             end,
           },

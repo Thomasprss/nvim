@@ -9,6 +9,9 @@ return {
   opts.sources = vim.list_extend(opts.sources or {}, {
     nls.builtins.formatting.stylua,
     nls.builtins.formatting.shfmt,
+    nls.builtins.formatting.packer,
+    nls.builtins.formatting.terraform_fmt,
+    nls.builtins.diagnostics.terraform_validate,
   })
 end
 }
