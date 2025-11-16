@@ -5,7 +5,7 @@ return {
   config = function()
     local db = require("dashboard")
 
-      local berserk_logo = {
+    local berserk_logo = {
       "⠀⠀  ⢀⡴⠁⠀⠀⣿⡏⠀⠀⠱⣄    ",
       "⠀⠀⢀⣴⡟⠁⠀⠀⠀⣿⡇⠀⠀⠀⠙⣷⣄  ",
       "⠀⠀⠙⢿⣷⣄⠀⠀⠀⣿⡇⠀⠀⢀⣴⣿⠋  ",
@@ -51,7 +51,8 @@ return {
             action = function()
               require("telescope.builtin").find_files({
                 prompt_title = "Select Repository",
-                cwd = "~/Documents/Kering/repo",
+                -- cwd = "~/Documents/Kering/repo",
+                cwd = "~/Documents",
                 find_command = { "fd", "--type", "d", "--max-depth", "1" },
                 attach_mappings = function(_, map)
                   local actions = require("telescope.actions")
@@ -60,8 +61,9 @@ return {
                   local open_repo = function(prompt_bufnr)
                     local selection = action_state.get_selected_entry()
                     actions.close(prompt_bufnr)
-                    vim.cmd("cd ~/Documents/Kering/repo/" .. selection[1])
-                    vim.cmd("e " .. selection [1])
+                    -- vim.cmd("cd ~/Documents/Kering/repo/" .. selection[1])
+                    vim.cmd("cd ~/Documents/" .. selection[1])
+                    vim.cmd("e " .. selection[1])
                     vim.cmd("Neotree toggle left")
                   end
 
