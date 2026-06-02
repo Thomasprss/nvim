@@ -29,7 +29,7 @@ return {
 					{
 						icon = "  ",
 						desc = "Open File Explorer",
-						action = "Ex",
+						action = "Oil",
 						key = "e",
 					},
 					{

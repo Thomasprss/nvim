@@ -1,6 +1,5 @@
 local opt = vim.opt
 
-opt.background = "light" -- Fond blanc
 opt.termguicolors = true -- Support des couleurs
 
 opt.number = true -- Numéros de ligne
@@ -19,11 +18,13 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.cursorline = true
 
 opt.termguicolors = true
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.signcolumn = "no" -- show sign column so that text doesn't shift
 
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 opt.clipboard = "unnamedplus"
+
+vim.keymap.set("x", "p", '"_dP')
 
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
